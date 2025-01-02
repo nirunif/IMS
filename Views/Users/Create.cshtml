@@ -1,0 +1,55 @@
+﻿@model IMSProject.Models.User
+
+@{
+    ViewData["Title"] = "Create User";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+
+<div class="container mt-6">
+    <h2 class="text-center mb-4">Create New User</h2>
+
+    <div class="col-md-6 offset-md-3">
+        <form asp-action="Create" method="post">
+            <div class="form-group">
+                <label for="Role">Role</label>
+                <select id="Role" name="Role" class="form-control" required>
+                    <option value="">Select Role</option>
+                    <option value="Admin">Admin</option>
+                    <option value="Doctor">Doctor</option>
+                    <option value="Radiologist">Radiologist</option>
+                    <option value="Patient">Patient</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="Username">Username</label>
+                <input type="text" id="Username" name="Username" class="form-control" required />
+            </div>
+
+            <div class="form-group">
+                <label for="Password">Password</label>
+                <input type="password" id="Password" name="Password" class="form-control" required />
+            </div>
+
+            <div class="form-group">
+                <label for="ConfirmPassword">Confirm Password</label>
+                <input type="password" id="ConfirmPassword" name="confirmPassword" class="form-control" required />
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block">Create User</button>
+        </form>
+    </div>
+
+    @if (!ViewData.ModelState.IsValid)
+    {
+        <div class="alert alert-danger mt-4">
+            <strong>Error:</strong> @ViewData.ModelState[""].Errors[0].ErrorMessage
+        </div>
+    }
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

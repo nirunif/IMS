@@ -1,0 +1,59 @@
+﻿@model IMSProject.Models.MedicalStaff
+
+@{
+    ViewData["Title"] = "Medical Staff Details";
+}
+
+@* Bootstrap and custom CSS *@
+@* Add Bootstrap CDN *@
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+
+<div class="container mt-4">
+    <h2>Medical Staff Details</h2>
+    <div class="row">
+        <div class="col-md-6">
+            <table class="table table-bordered">
+                <tr>
+                    <th>Name</th>
+                    <td>@Model.Name</td>
+                </tr>
+                <tr>
+                    <th>Role</th>
+                    <td>@Model.Role</td>
+                </tr>
+                <tr>
+                    <th>Contact Number</th>
+                    <td>@Model.ContactNumber</td>
+                </tr>
+                <tr>
+                    <th>Specialization</th>
+                    <td>@Model.Specialty</td>
+                </tr>
+                <tr>
+                    <th>Email</th>
+                    <td>@Model.Email</td>
+                </tr>
+                <tr>
+                    <th>Date of Joining</th>
+                    <td>@Model.DateOfJoining.ToString("yyyy-MM-dd")</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <div class="text-center mt-4">
+        <a href="@Url.Action("Edit", "MedicalStaff", new { id = Model.MedicalStaffID })" class="btn btn-warning btn-sm">
+            <i class="fas fa-edit"></i> Edit
+        </a>
+        <a href="@Url.Action("Delete", "MedicalStaff", new { id = Model.MedicalStaffID })" class="btn btn-danger btn-sm">
+            <i class="fas fa-trash-alt"></i> Delete
+        </a>
+    </div>
+
+    <a href="@Url.Action("Index", "MedicalStaff")" class="btn btn-secondary mt-3">Back to List</a>
+</div>
+
+@* Bootstrap JS and dependencies *@
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

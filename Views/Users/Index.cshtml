@@ -1,0 +1,54 @@
+﻿@model IEnumerable<IMSProject.Models.User>
+
+@{
+    ViewData["Title"] = "User List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+
+<div class="container mt-6">
+    <h2 class="text-center mb-4">User List</h2>
+
+    <div class="text-center mb-4">
+        <a href="@Url.Action("Create", "Users")" class="btn btn-primary btn-sm">
+            <i class="fas fa-plus"></i> Add New User
+        </a>
+    </div>
+
+    <div class="table-responsive" style="width: 100%;">
+        <table class="table table-bordered table-hover text-center">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Role</th>
+                    <th>Username</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var user in Model)
+                {
+                    <tr>
+                        <td>@user.Role</td>
+                        <td>@user.Username</td>
+                        <td>
+                            <div class="d-flex justify-content-around">
+                                <a href="@Url.Action("Edit", "Users", new { id = user.UserID })" class="btn btn-warning btn-sm">
+                                    <i class="fas fa-edit"></i> Edit
+                                </a>
+                                <a href="@Url.Action("Delete", "Users", new { id = user.UserID })" class="btn btn-danger btn-sm">
+                                    <i class="fas fa-trash-alt"></i> Delete
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>

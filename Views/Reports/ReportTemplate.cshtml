@@ -1,0 +1,41 @@
+﻿@model dynamic
+@{
+    ViewData["Title"] = "Patient Report";
+}
+
+<h1>Patient Report</h1>
+
+<h2>Patient Details</h2>
+<p><strong>Name:</strong> @Model.Patient.Name</p>
+<p><strong>Address:</strong> @Model.Patient.Address</p>
+<p><strong>Contact:</strong> @Model.Patient.ContactNumber</p>
+<p><strong>Date of Birth:</strong> @Model.Patient.DateofBirth.ToShortDateString()</p>
+<p><strong>Medical Condition:</strong> @Model.Patient.MedicalCondition</p>
+
+<h2>Doctor Details</h2>
+@if (Model.Doctor != null)
+{
+    <p><strong>Doctor Name:</strong> @Model.Doctor.Name</p>
+}
+else
+{
+    <p><strong>Doctor Name:</strong> Not Assigned</p>
+}
+
+<h2>Diagnosis</h2>
+<p>@Model.Report.DiagnosisDetails</p>
+
+<h2>Images</h2>
+<div>
+    @if (Model.Images != null && Model.Images.Any())
+    {
+        foreach (var image in Model.Images)
+        {
+            <img src="@image" alt="Medical Image" style="max-width: 200px; margin: 10px;" />
+        }
+    }
+    else
+    {
+        <p>No images available.</p>
+    }
+</div>

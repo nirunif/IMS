@@ -1,0 +1,59 @@
+﻿@model IMSProject.Models.MedicalImages
+
+@{
+    ViewData["Title"] = "Edit Medical Image";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+
+<div class="container mt-4">
+    <h2>Edit Medical Image</h2>
+    <form method="post" enctype="multipart/form-data">
+      
+
+        <div class="form-group">
+            <label for="PatientName">Patient Name</label>
+            <input type="text" class="form-control" id="PatientName" value="@Model.Name" readonly />
+        </div>
+
+        <div class="form-group">
+            <label for="DiseaseType">Disease Type</label>
+            <input type="text" class="form-control" id="DiseaseType" value="@Model.DiseaseType" name="DiseaseType" />
+        </div>
+
+        <!--<div class="form-group">
+            <label for="ImageType">Image Type</label>
+            <select class="form-control" id="ImageType" name="ImageType">
+                <option value="X-Ray" @(Model.ImageType == "X-Ray" ? "selected" : "")>X-Ray</option>
+                <option value="CT Scan" @(Model.ImageType == "CT Scan" ? "selected" : "")>CT Scan</option>
+                <option value="MRI" @(Model.ImageType == "MRI" ? "selected" : "")>MRI</option>
+                <option value="Ultrasound" @(Model.ImageType == "Ultrasound" ? "selected" : "")>Ultrasound</option>-->
+                <!-- Add more options as needed -->
+            <!--</select>
+        </div>-->
+
+        <div class="form-group">
+            <label for="ImageURL">Current Image</label>
+            <div>
+                <a href="@Url.Content("~/" + Model.ImageURL)" target="_blank">View Current Image</a>
+            </div>
+            <div>
+                <input type="checkbox" id="RemoveImage" name="RemoveImage" />
+                <label for="RemoveImage">Remove the current image</label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="NewImage">Upload New Image (Optional)</label>
+            <input type="file" class="form-control" id="NewImage" name="NewImage" />
+        </div>
+
+        <button type="submit" class="btn btn-success">Save Changes</button>
+        <a href="@Url.Action("Index", "MedicalImages")" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

@@ -1,0 +1,45 @@
+﻿@model IMSProject.Models.User
+
+@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+
+<div class="container mt-5">
+    <h2 class="text-center mb-4">User Login</h2>
+
+    <div class="col-md-6 offset-md-3">
+        <form asp-action="Login" method="post">
+            <div class="form-group">
+                <label for="Username">Username</label>
+                <input type="text" id="Username" name="Username" class="form-control" required />
+            </div>
+
+            <div class="form-group">
+                <label for="Password">Password</label>
+                <input type="password" id="Password" name="Password" class="form-control" required />
+            </div>
+
+            <div class="form-group">
+                <label for="ConfirmPassword">Confirm Password</label>
+                <input type="password" id="ConfirmPassword" name="ConfirmPassword" class="form-control" required />
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block">Login</button>
+            <button type="reset" class="btn btn-secondary btn-block mt-2">Clear</button>
+        </form>
+    </div>
+
+    @if (ViewData["LoginError"] != null)
+    {
+        <div class="alert alert-danger mt-4">
+            <strong>Error:</strong> @ViewData["LoginError"]
+        </div>
+    }
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

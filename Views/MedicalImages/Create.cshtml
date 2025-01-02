@@ -1,0 +1,41 @@
+﻿@model IMSProject.Models.MedicalImages
+
+@{
+    ViewData["Title"] = "Upload Medical Image";
+}
+
+<div class="container mt-4">
+    <h2>Upload Medical Image</h2>
+
+    <form asp-action="Create" method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="PatientID">Select Patient</label>
+            <select class="form-control" id="PatientId" name="PatientId" required>
+                <option value="">-- Select Patient --</option>
+                @foreach (var patient in ViewBag.Patients as List<IMSProject.Models.Patient>)
+                {
+                    <option value="@patient.PatientID">@patient.Name</option>
+                }
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="ImageType">Image Type</label>
+            <select class="form-control" id="ImageType" name="ImageType" required>
+                <option value="MRI">MRI</option>
+                <option value="CT">CT</option>
+                <option value="Xray">Xray</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="Image">Upload Image</label>
+            <input type="file" class="form-control" id="Image" name="Image" required />
+        </div>
+
+        <div class="text-center mt-4">
+            <button type="submit" class="btn btn-success btn-sm">Upload</button>
+            <a href="@Url.Action("Index", "MedicalImages")" class="btn btn-secondary btn-sm">Cancel</a>
+        </div>
+    </form>
+</div>

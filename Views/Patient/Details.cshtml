@@ -1,0 +1,80 @@
+﻿@model IMSProject.Models.Patient
+
+@{
+    ViewData["Title"] = "Patient Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@* Bootstrap and custom CSS *@
+@* Add Bootstrap CDN *@
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+
+<div class="container mt-4">
+    <h2>Patient Details</h2>
+    <div class="row">
+        <div class="col-md-6">
+            <table class="table table-bordered">
+                <tr>
+                    <th>Name</th>
+                    <td>@Model.Name</td>
+                </tr>
+                <tr>
+                    <th>Address</th>
+                    <td>@Model.Address</td>
+                </tr>
+                <tr>
+                    <th>Contact Number</th>
+                    <td>@Model.ContactNumber</td>
+                </tr>
+                <tr>
+                    <th>Date of Birth</th>
+                    <td>@Model.DateofBirth.ToString("dd/MM/yyyy")</td>
+                </tr>
+                <tr>
+                    <th>Medical Condition</th>
+                    <td>@Model.MedicalCondition</td>
+                </tr>
+                <tr>
+                    <th>Diagnosis</th>
+                    <td>@Model.Diagnosis</td>
+                </tr>
+                <tr>
+                    <th>Total Cost</th>
+                    <td>@Model.TotalCost</td>
+                </tr>
+
+                @* Add Image Details *@
+                @if (Model.MedicalImages != null && Model.MedicalImages.Count > 0)
+                {
+                    foreach (var image in Model.MedicalImages)
+                    {
+            <tr>
+                <th>Image Type</th>
+                <td>@image.ImageType</td>
+            </tr>
+                                <tr>
+                                    <th>Image</th>
+                                    <td>
+                                        <a href="@Url.Content("~/" + image.ImageURL)" target="_blank">View Image</a>
+                                    </td>
+                                </tr> }
+                                            }
+                                            else
+                                            {
+                                <tr>
+                                    <th colspan="2">-</th>
+                                </tr>}
+
+
+
+            </table>
+        </div>
+    </div>
+
+    <a href="@Url.Action("Index", "Patient")" class="btn btn-secondary">Back to List</a>
+</div>
+
+@* Bootstrap JS and dependencies *@
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
